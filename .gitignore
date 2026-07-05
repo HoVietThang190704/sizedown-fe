@@ -1,0 +1,16 @@
+node_modules/
+.next/
+dist/
+coverage/
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+dev.log
+dev.err.log
+*.tsbuildinfo
+backend-size/uploads/*
+backend-size/compressed/*
+!backend-size/uploads/.gitkeep
+!backend-size/compressed/.gitkeep
