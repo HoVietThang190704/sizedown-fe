@@ -4,7 +4,7 @@ import { ChangeEvent, DragEvent, useMemo, useRef, useState } from "react";
 import { AlertCircle, CheckCircle2, Download, FileArchive, Loader2, UploadCloud, X } from "lucide-react";
 import clsx from "clsx";
 
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 const maxFileSize = 50 * 1024 * 1024;
 const allowedExtensions = [".pdf", ".jpg", ".jpeg", ".png", ".docx", ".pptx"];
 
