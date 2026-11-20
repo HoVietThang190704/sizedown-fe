@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 const maxFileSize = 50 * 1024 * 1024;
-const allowedExtensions = [".pdf", ".jpg", ".jpeg", ".png", ".docx", ".pptx"];
+const allowedExtensions = [".pdf", ".jpg", ".jpeg", ".png", ".docx", ".pptx", ".xlsx"];
 
 type UploadResponse = {
   file: {
@@ -49,7 +49,7 @@ function validateClientFile(file: File) {
   const extension = getExtension(file.name);
 
   if (!allowedExtensions.includes(extension)) {
-    return "Chỉ hỗ trợ PDF, JPG, JPEG, PNG, DOCX và PPTX.";
+    return "Chỉ hỗ trợ PDF, JPG, JPEG, PNG, DOCX, PPTX và XLSX (Excel).";
   }
 
   if (file.size > maxFileSize) {
@@ -77,7 +77,7 @@ export default function HomePage() {
   const [result, setResult] = useState<CompressResult | null>(null);
 
   const selectedFileLabel = useMemo(() => {
-    if (!file) return "PDF, JPG, PNG, DOCX, PPTX - tối đa 50MB";
+    if (!file) return "PDF, JPG, PNG, DOCX, PPTX, XLSX - tối đa 50MB";
     return `${file.name} • ${formatBytes(file.size)}`;
   }, [file]);
 
@@ -202,7 +202,13 @@ export default function HomePage() {
               ) : null}
             </div>
 
-            <input ref={inputRef} type="file" className="hidden" onChange={handleInputChange} />
+            <input
+              ref={inputRef}
+              type="file"
+              accept=".pdf,.jpg,.jpeg,.png,.docx,.pptx,.xlsx"
+              className="hidden"
+              onChange={handleInputChange}
+            />
           </div>
 
           {error ? (
